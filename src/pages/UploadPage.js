@@ -2,6 +2,7 @@ import React, { useState , useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Link } from "react-router-dom";
 
 const ObjectDetectionResults = ({ detections }) => {
     const [objectCounts, setObjectCounts] = useState({});
@@ -45,7 +46,7 @@ export default function UploadPage() {
         formData.append("image", file);
 
         try {
-            const res = await axios.post("https://object-detection-tbc1.onrender.com/api/detect/upload", formData);
+            const res = await axios.post("http://localhost:4000/api/detect/upload", formData);
             console.log("Backend Response: ",res.data);
             setResult(res.data.parseResult);
             setImageUrl(`${res.data.imageUrl}?t=${Date.now()}`);
@@ -58,13 +59,15 @@ export default function UploadPage() {
     return (
         <div className="container">
             <h1>AI-Powered Blind Spot Detection</h1>
+            <Link to={"/live"}><button>Live Detection</button>
+            </Link>
             <input type="file" onChange={(e) => setFile(e.target.files[0])} />
             <button onClick={handleUpload}>Upload & Detect</button>
             
             {imageUrl && (
                 <div>
                     <h2>Detected Image:</h2>
-                    <img src={imageUrl} alt="Detected Output" style={{ width: "100%", maxWidth: "500px", border: "2px solid black" }} />
+                    <img src={imageUrl} alt="Detected Output" style={{ width: "100%", maxWidth: "500px", border: "2px solid black"  }} />
                 </div>
             )}
 
@@ -74,6 +77,8 @@ export default function UploadPage() {
                     <ObjectDetectionResults detections={result.detections} />
                 </div>
             )}
+            
         </div>
+        
     );
 }

@@ -1,0 +1,36 @@
+.past-detections {
+    text-align: center;
+    margin: 20px auto;
+  }
+  
+  table {
+    width: 80%;
+    border-collapse: collapse;
+    margin: 20px auto;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  th {
+    background-color: #f4f4f4;
+  }
+  
+  .risk-2 {
+    color: red;
+    font-weight: bold;
+  }
+  
+  .risk-1 {
+    color: orange;
+  }
+  
+  .risk-0 {
+    color: green;
+  }
+  .text{
+    text-align: center;
+  }
