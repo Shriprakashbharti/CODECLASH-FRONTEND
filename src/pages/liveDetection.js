@@ -28,22 +28,17 @@ const LiveDetection = () => {
     <div className="live-detection-container">
       <h1>🚗 Live Blind Spot Detection</h1>
 
-      {/* Live Video Feed */}
       <img
         className="live-video"
         src="http://localhost:5000/live-detection/video_feed"
         alt="Live Stream"
       />
 
-      {/* Risk Level Display */}
       <div className={`risk-indicator risk-${riskLevel}`}>
         Risk Level: {riskLevel === 2 ? "🚨 HIGH RISK" : "✅ SAFE"}
       </div>
 
-      {/* Alert Popup */}
       {alertVisible && <div className="alert-popup">⚠️ High Risk Detected! Drive Carefully!</div>}
-
-      {/* Play alert sound if risk is high */}
       {riskLevel >= 2 && (
         <audio autoPlay>
           <source src="/alert.mp3" type="audio/mpeg" />

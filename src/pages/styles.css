@@ -1,0 +1,128 @@
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  body {
+    background-color: #f4f4f4; /* Light mode background */
+    color: #333; /* Light text */
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .dark-mode {
+    background-color: #1f1f1f; /* Dark mode background */
+    color: #fff; /* Dark text */
+  }
+  
+  header {
+    background: #007BFF; /* Blue header */
+    padding: 20px 40px;
+    color: #fff;
+    text-align: center;
+  }
+  
+  header h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
+  main {
+    padding: 40px 20px;
+    text-align: center;
+    max-width: 1200px;
+    height: 100%;
+    margin: auto;
+  }
+  
+  button {
+    background-color: #007BFF;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  section {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  
+  section div {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  section div h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+  
+  footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+    bottom: 0;
+    /* width: 100%; */
+    
+  }
+  
+  footer p {
+    font-size: 0.9rem;
+  }
+  
+  /* Light Mode Button */
+  .light-mode-toggle {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    background-color: #ffcc00;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .light-mode-toggle:hover {
+    background-color: #ffaa00;
+  }
+  .main{
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Media Queries */
+  @media (max-width: 768px) {
+    section {
+      grid-template-columns: 1fr;
+    }
+    header h1 {
+      font-size: 2rem;
+    }
+    button {
+      padding: 10px 20px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    header h1 {
+      font-size: 1.8rem;
+    }
+  }
+  
