@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./LiveDetection.css";
-
+import { Link } from "react-router-dom";
 const LiveDetection = () => {
   const [riskLevel, setRiskLevel] = useState(0);
   const [alertVisible, setAlertVisible] = useState(false);
@@ -49,6 +49,10 @@ const LiveDetection = () => {
           <source src="/alert.mp3" type="audio/mpeg" />
         </audio>
       )}
+      <div>
+      <Link to={"/pastDetections"}><button>Past Detections</button>
+      </Link>
+      </div>
     </div>
   );
 };
