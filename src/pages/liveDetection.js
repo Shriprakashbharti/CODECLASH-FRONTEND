@@ -7,7 +7,7 @@ const LiveDetection = () => {
 
   useEffect(() => {
     const fetchRiskLevel = () => {
-      fetch("http://localhost:5000/live-detection/risk-level")
+      fetch("auth/live-detection/risk-level")
         .then((res) => res.json())
         .then((data) => {
           setRiskLevel(data.risk_level);
@@ -30,7 +30,7 @@ const LiveDetection = () => {
 
       <img
         className="live-video"
-        src="http://localhost:5000/live-detection/video_feed"
+        src="auth/live-detection/video_feed"
         alt="Live Stream"
       />
 

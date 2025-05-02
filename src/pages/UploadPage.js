@@ -45,7 +45,7 @@ export default function UploadPage() {
         formData.append("image", file);
 
         try {
-            const res = await axios.post("http://localhost:4000/api/detect/upload", formData);
+            const res = await axios.post("api/api/detect/upload", formData);
             console.log("Backend Response: ",res.data);
             setResult(res.data.parseResult);
             setImageUrl(`${res.data.imageUrl}?t=${Date.now()}`);

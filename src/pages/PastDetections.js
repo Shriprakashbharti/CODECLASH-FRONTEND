@@ -5,7 +5,7 @@ const PastDetections = () => {
   const [detections, setDetections] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/live-detection/past-detections")
+    fetch("auth/live-detection/past-detections")
       .then((res) => res.json())
       .then((data) => {
         console.log("Fetched Data:", data); // Debugging output
