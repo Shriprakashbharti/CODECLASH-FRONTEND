@@ -2,7 +2,11 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+<<<<<<< HEAD
   "proxy": "https://blind-spot-detection.onrender.com",
+=======
+ "proxy": "https://blind-spot-detection.onrender.com",
+>>>>>>> aba3df94ece5af37bc5a3bc97b0d10abd320a0d9
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
