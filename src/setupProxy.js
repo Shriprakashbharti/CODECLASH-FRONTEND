@@ -4,17 +4,11 @@ module.exports = function(app) {
   app.use(
     '/api',
     createProxyMiddleware({
-      target: 'http://localhost:4000',
+      target: 'https://blind-spot-detection.onrender.com',
       changeOrigin: true,
-    })
-  );
-  
-  // You can add more proxies for different paths
-  app.use(
-    '/auth',
-    createProxyMiddleware({
-      target: 'http://localhost:5000',
-      changeOrigin: true,
+      pathRewrite: {
+        '^/api': '', // Remove /api prefix when forwarding
+      },
     })
   );
 };

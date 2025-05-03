@@ -1,4 +1,4 @@
-import React, { useState , useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -34,7 +34,10 @@ export default function UploadPage() {
     const [file, setFile] = useState(null);
     const [result, setResult] = useState(null);
     const [imageUrl, setImageUrl] = useState("");
-  
+    
+    // Use environment variable for backend URL
+    const API_BASE_URL = process.env.REACT_APP_API_URL || '/api';
+
     const handleUpload = async () => {
         if (!file) {
             toast.error("Please select an image");
@@ -45,13 +48,25 @@ export default function UploadPage() {
         formData.append("image", file);
 
         try {
-            const res = await axios.post("api/api/detect/upload", formData);
-            console.log("Backend Response: ",res.data);
+            const res = await axios.post(`${API_BASE_URL}/detect/upload`, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+            
+            console.log("Backend Response: ", res.data);
             setResult(res.data.parseResult);
-            setImageUrl(`${res.data.imageUrl}?t=${Date.now()}`);
+            
+            // Handle image URL properly
+            const imagePath = res.data.imageUrl.startsWith('http') 
+                ? res.data.imageUrl 
+                : `${API_BASE_URL}${res.data.imageUrl}`;
+                
+            setImageUrl(`${imagePath}?t=${Date.now()}`);
             toast.success("Image processed successfully!");
         } catch (error) {
-            toast.error("Error processing image");
+            console.error("Upload error:", error);
+            toast.error(error.response?.data?.message || "Error processing image");
         }
     };
 
@@ -59,13 +74,25 @@ export default function UploadPage() {
         <div className="container">
             <h1>AI-Powered Blind Spot Detection</h1>
     
-            <input type="file" onChange={(e) => setFile(e.target.files[0])} />
+            <input 
+                type="file" 
+                accept="image/*"
+                onChange={(e) => setFile(e.target.files[0])} 
+            />
             <button onClick={handleUpload}>Upload & Detect</button>
             
             {imageUrl && (
                 <div>
                     <h2>Detected Image:</h2>
-                    <img src={imageUrl} alt="Detected Output" style={{ width: "100%", maxWidth: "500px", border: "2px solid black"  }} />
+                    <img 
+                        src={imageUrl} 
+                        alt="Detected Output" 
+                        style={{ 
+                            width: "100%", 
+                            maxWidth: "500px", 
+                            border: "2px solid black"  
+                        }} 
+                    />
                 </div>
             )}
 
@@ -75,8 +102,6 @@ export default function UploadPage() {
                     <ObjectDetectionResults detections={result.detections} />
                 </div>
             )}
-            
         </div>
-        
     );
 }
