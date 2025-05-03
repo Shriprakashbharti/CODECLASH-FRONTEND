@@ -4,7 +4,7 @@ module.exports = function(app) {
   app.use(
     '/api',
     createProxyMiddleware({
-      target: 'http://localhost:4000',
+      target: "https://blind-spot-detection.onrender.com",
       changeOrigin: true,
     })
   );
@@ -13,7 +13,7 @@ module.exports = function(app) {
   app.use(
     '/auth',
     createProxyMiddleware({
-      target: 'http://localhost:5000',
+      target: "https://blind-spot-detection.onrender.com",
       changeOrigin: true,
     })
   );
