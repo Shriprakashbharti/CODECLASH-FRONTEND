@@ -36,7 +36,7 @@ export default function UploadPage() {
     const [imageUrl, setImageUrl] = useState("");
     
     // Use environment variable for backend URL
-    const API_BASE_URL = process.env.REACT_APP_API_URL || '/api';
+    const API_BASE_URL ='/api';
 
     const handleUpload = async () => {
         if (!file) {

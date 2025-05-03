@@ -8,7 +8,7 @@ const LiveDetection = () => {
   const [isConnected, setIsConnected] = useState(true);
 
   // Use environment variable for backend URL
-  const API_BASE_URL = process.env.REACT_APP_API_URL || '/api';
+  const API_BASE_URL ='/api';
 
   useEffect(() => {
     const fetchRiskLevel = async () => {
